@@ -1,5 +1,6 @@
 let path = require('path');
 let CopyWebpackPlugin = require('copy-webpack-plugin');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let conf = {
     entry: './src/game.js',
@@ -30,12 +31,17 @@ let conf = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            hash: false,
+            template: './index.html',
+            filename:'./index.html'
+        }),
         new CopyWebpackPlugin([
             {
                 from: './src/img',
                 to: './img'
             }
-        ]),
+        ])
     ]
 };
 
